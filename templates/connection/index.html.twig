@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion vipCcroft{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+	{{ encore_entry_link_tags('connectForm') }}
+{% endblock %}
+
+
+
+{% block body %}
+	<h1 class="text-center  creamCakeFont">Connexion</h1>
+	<form class="login100-form validate-form fondTransparent col-12 p-3" id="Connexion" method="POST">
+
+		<div class="wrap-input100 validate-input row">
+			<label class="creamCakeFont col-4 text-right">Login :</label>
+			<input class="input100 col-6 text-left" type="text" name="login" placeholder="login">
+		</div>
+
+		<div class="wrap-input100 validate-input row" data-validate = "Password is required">
+			<label class="creamCakeFont col-4 text-right">Mot de passe :</label>
+			<input class="input100 col-6 text-left" type="password " name="pass" placeholder="Password">
+		</div>
+		
+		<div class="p-t-12 creamCakeFont text-center">
+			<span class="txt1 ">
+				Forgot
+			</span>
+			<a class="txt2 darkPinkFont" href="#">Username <span class="sansFont">/</span> Password
+			</a>
+		</div>
+
+		<div class="container-login100-form-btn text-center">
+			<button class="login100-form-btn col-10" id="connectionButtonForm">
+				Connexion
+			</button>
+		</div>
+	</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout Moderateur{% endblock %}
+
+{% block body %}
+    <h1 class="text-center creamCakeFont darkPinkFont">Ajout des modos</h1>
+
+    <form class="login100-form validate-form fondTransparent col-12 p-3" id="ajoutModo" method="POST">
+        <div class="wrap-input100 validate-input row">
+			<label class="creamCakeFont col-5 text-right">
+                <span class="fontPrincipale">Adresse mail</span>
+                <span class="sansFont">:</span>
+            </label>
+			<input class="input100 col-6 text-left" type="email" name="email" placeholder="Nouvel email">
+		</div> 
+        <div class="wrap-input100 validate-input row">
+			<label class="creamCakeFont col-5 text-right"> Nouveau mot de pass <span class="sansFont">=</span> </label>
+			<input class="input100 col-6 text-left" type="password" name="mdp" placeholder="Nouvel mot de pass">
+		</div>
+        <div class="container-login100-form-btn text-center">
+			<button class="login100-form-btn col-10" id="editButtonForm">
+				Valider
+			</button>
+		</div>
+	</form>
+{% endblock %}

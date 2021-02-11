@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des vips{% endblock %}
+
+{% block body %}
+    <h1 class="text-center creamCakeFont ">Liste des vips:</h1>
+    <table class="fondTransparent table-responsive">
+        <thead>
+            <th col col-4>pseudo</th>
+            <th col col-4>date de vip</th>
+            <th col col-4>durée</th>
+            <th col col-4>rang</th>
+            <th col col-4>modifier</th>
+            <th col col-4>supprimer</th>
+        </thead>
+        <tbody>
+            {% for vip in vips %}
+                <tr>
+                    <td>{{vip["pseudoVip"]}}</td>
+                    <td>{{vip["dateofVip"]|date('Y-m-d')}}</td>
+                    <td>{{vip["duree"]}}</td>
+                    <td>
+                        {% if vip["superVip"] == 0 %}
+                            famille
+                        {% elseif vip["superVip"] == 1 %}
+                            amis / connaissance
+                        {% elseif vip["superVip"] == 2 %}
+                            Viewers
+                        {% endif %}
+                    </td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="close" >
+                            <span aria-hidden="Suppression">&times;</span>
+                        </button>
+                    </td>         
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,79 @@
+index:
+    path: /
+    controller: App\Controller\IndexController::index
+
+connection:
+    path: /connexion
+    controller: App\Controller\ConnectionController::index
+
+deconnexion:
+    path: /deconnexion
+    controller: App\Controller\DeconnexionController::index
+
+modos:
+    path: /moderateur
+    controller: App\Controller\ModosController::index
+
+ajoutModo:
+    path: /moderateur/add
+    controller: App\Controller\ModosController::add
+
+vips:
+    path: /vips
+    controller: App\Controller\VipsController::index
+
+profil:
+    path: /profil
+    controller: App\Controller\ProfilController::index
+
+profilEdit:
+    path: /profil/edit
+    controller: App\Controller\ProfilController::edit
+
+
+inscriptionAdd:
+    path: /inscription/{links}
+    controller: App\Controller\InscriptionController::add
+    requirements:
+        link: "[.]*"
+
+inscriptionBloquer:
+    path: /inscription
+    controller: App\Controller\Error404Controller::bloquer
+
+
+error:
+    path: /{errors}
+    controller: App\Controller\Error404Controller::index
+    requirements:
+        error: "[.]*"
+
+connexionError:
+    path: /connexion/{errors}
+    controller: App\Controller\Error404Controller::connexion
+    requirements:
+        error: "([.]\/)*"
+
+profilError:
+    path: /profil/{errors}
+    controller: App\Controller\Error404Controller::profil
+    requirements:
+        error: "[.]*"
+
+vipsError:
+    path: /vips/{errors}
+    controller: App\Controller\Error404Controller::vips
+    requirements:
+        error: "[.]*"
+
+modosError:
+    path: /deconnexion/{errors}
+    controller: App\Controller\Error404Controller::deco
+    requirements:
+        error: "[.]*"
+
+decoError:
+    path: /moderateur/{errors}
+    controller: App\Controller\Error404Controller::moderateur
+    requirements:
+        error: "[.]*"

@@ -1,0 +1,24 @@
+// font awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+
+// customize some Bootstrap variables
+$primary: #a4c5fc;
+$secondary: #85d2e0;
+$success: #acfca4;
+$info: #c3a4fc;
+$warning: #fce4a4;
+$danger: #fca5a4;
+$dark: #454545;
+$light: #d9d9d9;
+
+// couleur de fond
+//$body-bg: rgba(45, 240, 10, 0.18);
+$body-bg: #f8fafc;
+
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";

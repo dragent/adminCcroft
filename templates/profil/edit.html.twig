@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{profil.getPseudoModerateur()}}{% endblock %}
+
+{% block body %}
+    <h1 class="text-center creamCakeFont darkPinkFont">{{profil.getPseudoModerateur()|capitalize}}</h1>
+    
+    <form class="validate-form fondTransparent col-12 p-3" id="Modification" method="POST">
+        <div class="wrap-input100 validate-input row">
+			<label class="creamCakeFont col-5 text-right">
+                <span class="fontPrincipale">Adresse mail</span>
+                <span class="sansFont">:</span>
+                <span class="fontPrincipale"> Actuelle </span>
+                <span class="sansFont">=</span>
+                <span class="fontPrincipale"> {{profil.getEmail()[0]}}</span>
+                <span class="sansFont">@</span>
+                <span class="fontPrincipale">{{profil.getEmail()[1]}} </span>
+                <span class="sansFont">/</span>
+                <span class="fontPrincipale">Nouvelle </span>
+                <span class="sansFont">=</span>
+            </label>
+			<input class="input100 col-6 text-left" type="email" name="email" placeholder="Nouvel email"></input>
+		</div> 
+        
+        <div class="wrap-input100 validate-input row">
+			<label class="creamCakeFont col-5 text-right"> Nouveau mot de pass <span class="sansFont">=</span> </label>
+			<input class="input100 col-6 text-left" type="password" name="mdp" placeholder="Nouvel mot de pass">
+		</div>
+        <input type="hidden" name="modifSend" value="true"></input>
+
+        <div class="container-login100-form-btn text-center">
+			<button class="login100-form-btn col-10" id="editButtonForm">
+				Modifier
+			</button>
+		</div>
+    </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+
+#connectionButtonForm
+{
+    border-radius: 50%;
+    background-color: white;
+    color:#7d1f47;
+    border-color: #7d1f47;
+    font-family: creamCake;
+    font-size:xx-large;
+}
+
+#connectionButtonForm:hover
+{
+    background-color: #7d1f47;
+    color:white;
+    border-color: white;
+}
+
+body{
+    color:#7d1f47;
+    font-size:x-large;
+}
+
+input
+{
+    background-color:rgba(255,255,255,0.5);
+    color: #7d1f47;
+    border: 1px solid #7d1f47;
+}

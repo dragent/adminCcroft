@@ -1,0 +1,45 @@
+<ul class="nav  creamCakeFont  vertical-nav col col-md-2 col-xl-2 d-sm-none d-none d-md-block fondTransparent " id="sidebar">
+  <li class="nav-item {% if route == '' %} bg-light  {%endif%}">
+    <a href="{{ path('index') }}" class="nav-link font-italic darkPinkFont  ">
+        <i class="ml-2 text-primary "></i>
+        vipCcroft
+    </a>
+  </li>
+
+  {% if app.session.get('idModo') is null %}
+    <li class="nav-item {% if route == 'connection' %} bg-light  {%endif%}">
+      <a href="{{ path('connection') }}" class="nav-link font-italic darkPinkFont">
+        <i class="ml-2 text-primary "></i>
+        connexion
+      </a>
+    </li>
+  {% endif %}
+  
+  {% if not app.session.get('idModo') is null %}
+    <li class="nav-item {% if route == 'vips' %} bg-light  {%endif%}">
+      <a href="{{ path('vips') }}" class="nav-link font-italic darkPinkFont">
+          <i class="ml-2 text-primary "></i>
+          Liste vips  
+      </a>
+    </li>
+    <li class="nav-item {% if route == 'modos' %} bg-light  {%endif%}">
+     <a href="{{ path('modos') }}" class="nav-link font-italic darkPinkFont">
+          <i class="ml-2 text-primary "></i>
+          modérateurs
+      </a>
+    </li>
+    <li class="nav-item {% if route == 'profil' %} bg-light  {%endif%}">
+     <a href="{{ path('profil') }}" class="nav-link font-italic darkPinkFont">
+          <i class="ml-2 text-primary "></i>
+          profil
+      </a>
+    </li>
+    
+    <li class="nav-item">
+      <a href="{{ path('deconnexion') }}" class="nav-link font-italic darkPinkFont">
+          <i class="ml-2 text-primary"></i>
+          Deconnexion
+      </a>
+    </li>
+  {% endif %}
+</ul>

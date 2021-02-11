@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{profil.getPseudoModerateur()}}{% endblock %}
+
+{% block body %}
+ <h1 class="text-center creamCakeFont darkPinkFont">{{profil.getPseudoModerateur()|capitalize}}</h1>
+ <div class="fondTransparent">
+    <p> adresse mail : {{profil.getEmail()[0]}}@{{profil.getEmail()[1]}}</p>
+    <p> rang Actuel :
+        {% if profil.getSuperModo()  %}
+            Super Modérateur
+        {% else %}
+            Modérateur
+        {%endif%}
+     </p>
+    <p> <a href="{{ path('profilEdit')}}">Edit</a></p>
+ </div>
+{% endblock %}
