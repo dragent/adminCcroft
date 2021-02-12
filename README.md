@@ -1,5 +1,5 @@
 # adminCcroft
 
-Insert VipccrofSql.sql first 
+Import all sql files
 Connect with login : test
              mdp : raz
