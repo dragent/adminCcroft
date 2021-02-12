@@ -21,9 +21,9 @@ class Moderateur implements UserInterface
     private $idModerateur;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string" , length=255)
      */
-    private $roles = [];
+    private $roles = "";
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -41,12 +41,12 @@ class Moderateur implements UserInterface
     private $mdp;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $lien;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean" , nullable=false)
      */
     private $superModo;
 
