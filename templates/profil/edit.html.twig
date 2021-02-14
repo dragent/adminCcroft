@@ -2,6 +2,10 @@
 
 {% block title %}{{profil.getPseudoModerateur()}}{% endblock %}
 
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+{% endblock %}
+
 {% block body %}
     <h1 class="text-center creamCakeFont darkPinkFont">{{profil.getPseudoModerateur()|capitalize}}</h1>
     

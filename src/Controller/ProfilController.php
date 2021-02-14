@@ -24,7 +24,38 @@ class ProfilController extends AbstractController
     private function modifProfil($mail,$mdp, $id)
     {
         $modosRepo=$this->getDoctrine()->getRepository(Moderateur::class);
-        $modosRepo->modifyByProfil($mail,$mdp,$id);
+        if($this->verifyEmail($mail))
+        {
+            if((!$mdp=="") && (!$mail==""))
+            {
+                $modosRepo->modifyByProfil($mail,$mdp,$id);
+                return $this->redirectToRoute('profil');
+            }
+            else if(($mdp=="") && (!$mail==""))
+            {
+
+                $modosRepo->modifMail($mail,$id);
+                return $this->redirectToRoute('profil');
+            }
+        }
+        else if ((!$mdp=="") && ($mail==""))
+        {
+            $modosRepo->modifPassword($mdp,$id);
+            return $this->redirectToRoute('profil');
+        }
+        return $this->render('profil/edit.html.twig', [
+            'profil'=>$modosRepo->findById($id),
+            'route'=>"profil",
+        ]);;
+    }
+
+
+    private function verifyEmail($email)
+    {
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return true;
+        }
+        return false;
     }
 
     public function index(): Response
@@ -50,19 +81,15 @@ class ProfilController extends AbstractController
         {
             return $this->redirectToRoute('index');
         }
+        $modosRepo=$this->getDoctrine()->getRepository(Moderateur::class);
         $request = Request::createFromGlobals();
         $modfiSend=$request->request->get('modifSend');
         if(! is_null($modfiSend))
         {
             $mail=$request->request->get('email');
             $mdp=$request->request->get('mdp');
-            if((!$mdp=="") && (!$mail==""))
-            {
-                $this->modifProfil($mail,$mdp,$id);
-                return $this->redirectToRoute('profil');
-            }
+            return $this->modifProfil($mail,$mdp,$id);
         }
-        $modosRepo=$this->getDoctrine()->getRepository(Moderateur::class);
         return $this->render('profil/edit.html.twig', [
             'profil'=>$modosRepo->findById($id),
             'route'=>"profil",

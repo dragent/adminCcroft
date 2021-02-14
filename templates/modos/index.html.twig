@@ -2,7 +2,9 @@
 
 {% block title %}Liste Modo{% endblock %}
 
-
+{% block stylesheets %}
+	{{ encore_entry_link_tags('moderateurListe') }}
+{% endblock %}
 {% block body %}
     <h1 class="text-center creamCakeFont darkPinkFont">Liste des modos:</h1>
     
@@ -45,8 +47,10 @@
 			<a id="ajoutButton" href="{{path('ajoutModo')}}" class="btn btn-info" role="button">Ajouter Modérateur</a>
 		</div>
     {% endif %}
+    
 {% endblock %}
+
 {% block javascripts %}
-
-
+	            <script src="{{ asset('js/deleteModerateur.js') }}"></script>
 {% endblock %}
+

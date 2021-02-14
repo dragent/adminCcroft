@@ -77,6 +77,35 @@ class ModerateurRepository extends ServiceEntityRepository
         $query->execute();
     }
 
+    public function modifPassword($mdp,$id)
+    {
+        $registry=$this->getEntityManager();
+        $qb=$registry->createQueryBuilder();
+        $qb->update("App:Moderateur",'m')
+            ->set("m.mdp",':mdp')
+            ->where('m.idModerateur = :id')
+            ->setParameter(":mdp",$mdp)
+            ->setParameter(":id",$id);
+        $qb->getDql();
+        $query=$qb->getQuery();
+        $query->execute();
+    }
+    
+
+    public function modifMail($mail,$id)
+    {
+        $registry=$this->getEntityManager();
+        $qb=$registry->createQueryBuilder();
+        $qb->update("App:Moderateur",'m')
+            ->set("m.email",":email")
+            ->where('m.idModerateur = :id')
+            ->setParameter(":email",$mail)
+            ->setParameter(":id",$id);
+        $qb->getDql();
+        $query=$qb->getQuery();
+        $query->execute();
+    }
+
     public function modifyByAdd($mail,$mdp,$id)
     {
         $registry=$this->getEntityManager();

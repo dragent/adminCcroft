@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('connectForm', './assets/connectForm.js')
+    .addEntry('moderateurListe', './assets/moderateurListe.js')
 
 
     .enableSingleRuntimeChunk()
@@ -35,7 +36,7 @@ Encore
 
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
-    .enableSingleRuntimeChunk()
+    .disableSingleRuntimeChunk()
 
     /*
      * FEATURE CONFIG

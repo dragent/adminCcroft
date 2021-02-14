@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Bienvenue{% endblock %}
-
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+{% endblock %}
 {% block body %}
 <h1 class="text-center creamCakeFont">Hello guys </h1>
 <div class="col-8 fondTransparent">
