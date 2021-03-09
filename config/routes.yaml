@@ -1,79 +1,41 @@
 index:
-    path: /
-    controller: App\Controller\IndexController::index
+   path: /
+   controller: App\Controller\IndexController::index
 
-connection:
-    path: /connexion
-    controller: App\Controller\ConnectionController::index
+register:
+   path: /inscription/{links}
+   controller: App\Controller\SecurityController::register
+   requirements:
+      link: "[.]*"
 
-deconnexion:
-    path: /deconnexion
-    controller: App\Controller\DeconnexionController::index
+login:
+   path: /connexion
+   controller: App\Controller\SecurityController::login
 
-modos:
-    path: /moderateur
-    controller: App\Controller\ModosController::index
-
-ajoutModo:
-    path: /moderateur/add
-    controller: App\Controller\ModosController::add
-
-vips:
-    path: /vips
-    controller: App\Controller\VipsController::index
+logout:
+   path: /deconnexion
+   controller: App\Controller\SecurityController::logout
 
 profil:
-    path: /profil
-    controller: App\Controller\ProfilController::index
+   path: /profil
+   controller: App\Controller\ProfilController::perso
 
 profilEdit:
-    path: /profil/edit
-    controller: App\Controller\ProfilController::edit
+   path: /profil/modification
+   controller: App\Controller\ProfilController::edit
 
+vips:
+   path: /vips
+   controller: App\Controller\VipsController::list
 
-inscriptionAdd:
-    path: /inscription/{links}
-    controller: App\Controller\InscriptionController::add
-    requirements:
-        link: "[.]*"
+addModo:
+   path: /modo/ajout
+   controller: App\Controller\ModoController::add
 
-inscriptionBloquer:
-    path: /inscription
-    controller: App\Controller\Error404Controller::bloquer
+modo:
+   path: /modo
+   controller: App\Controller\ModoController::list
 
-
-error:
-    path: /{errors}
-    controller: App\Controller\Error404Controller::index
-    requirements:
-        error: "[.]*"
-
-connexionError:
-    path: /connexion/{errors}
-    controller: App\Controller\Error404Controller::connexion
-    requirements:
-        error: "([.]\/)*"
-
-profilError:
-    path: /profil/{errors}
-    controller: App\Controller\Error404Controller::profil
-    requirements:
-        error: "[.]*"
-
-vipsError:
-    path: /vips/{errors}
-    controller: App\Controller\Error404Controller::vips
-    requirements:
-        error: "[.]*"
-
-modosError:
-    path: /deconnexion/{errors}
-    controller: App\Controller\Error404Controller::deco
-    requirements:
-        error: "[.]*"
-
-decoError:
-    path: /moderateur/{errors}
-    controller: App\Controller\Error404Controller::moderateur
-    requirements:
-        error: "[.]*"
+suppress:
+   path: /suppress
+   controller: App\Controller\SuppressController::suppress

@@ -15,3 +15,6 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 
 import './styles/base.scss';
 import './styles/navbar.scss';
+
+
+import './js/modoList.js';

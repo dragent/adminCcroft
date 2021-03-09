@@ -1,0 +1,18 @@
+.vertical-nav {
+    height: 100vh;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+    max-width: 150px;
+    min-width: 150px;
+    font-size:xx-large;
+  }
+
+.vertical-nav a:hover{ 
+    background-color: #7d1f47;
+    color:white;
+  }
+
+.vertical-nav a{
+  color: #7d1f47;
+}
+

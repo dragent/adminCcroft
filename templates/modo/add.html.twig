@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout Moderateur{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center creamCakeFont darkPinkFont">Ajout des modos</h1>
+
+    <form class="login100-form validate-form fondTransparent col-12 p-3" id="ajoutModo" method="POST">
+
+		<div class="wrap-input100 validate-input row">
+			<label class="creamCakeFont col-4 text-right">pseudo :</label>
+			<input class="input100 col-6 text-left" type="text" name="pseudo" placeholder="pseudo">
+		</div>
+
+		
+		<div class="wrap-input100 validate-input row">
+			<label class="creamCakeFont col-4 text-right">Rang de modération :</label>
+			
+			{% if app.user.getRolesString=='ROLES_CROFTY'%}
+				<div>
+					<input type="radio" id="SuperModo" name="roles" value="ROLES_CROFTY">
+					<label for="SuperModo">Crofty</label>
+				</div>
+				<div>
+					<input type="radio" id="SuperModo" name="roles" value="ROLES_SUPERMODO">
+					<label for="SuperModo">SuperModo</label>
+				</div>
+			{% endif %}
+			<div>
+				<input type="radio" id="Modo" name="roles" value="ROLES_MODO">
+				<label for="Modo">Modo</label>
+			</div>
+
+            <div>
+				<input type="radio" id="Amis" name="roles" value="ROLES_USER">
+				<label for="Amis">Amis</label>
+			</div>
+		</div>
+		
+		<div class="container-login100-form-btn text-center">
+			<button class="login100-form-btn col-10" id="addButtonForm">
+				Ajouter
+			</button>
+		</div>
+	</form>
+{% endblock %}

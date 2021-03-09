@@ -1,33 +1,34 @@
 <ul class="nav  creamCakeFont  vertical-nav col col-md-2 col-xl-2 d-sm-none d-none d-md-block fondTransparent " id="sidebar">
-  <li class="nav-item {% if route == '' %} bg-light  {%endif%}">
+  <li class="nav-item {% if route == 'index' %} bg-light  {%endif%}">
     <a href="{{ path('index') }}" class="nav-link font-italic darkPinkFont  ">
         <i class="ml-2 text-primary "></i>
         vipCcroft
     </a>
   </li>
 
-  {% if app.session.get('idModo') is null %}
-    <li class="nav-item {% if route == 'connection' %} bg-light  {%endif%}">
-      <a href="{{ path('connection') }}" class="nav-link font-italic darkPinkFont">
+  {% if not app.user%}
+    <li class="nav-item {% if route == 'login' %} bg-light  {%endif%}">
+      <a href="{{ path('login') }}" class="nav-link font-italic darkPinkFont">
         <i class="ml-2 text-primary "></i>
         connexion
       </a>
     </li>
-  {% endif %}
   
-  {% if not app.session.get('idModo') is null %}
+  {% else %}
     <li class="nav-item {% if route == 'vips' %} bg-light  {%endif%}">
       <a href="{{ path('vips') }}" class="nav-link font-italic darkPinkFont">
           <i class="ml-2 text-primary "></i>
           Liste vips  
       </a>
     </li>
-    <li class="nav-item {% if route == 'modos' %} bg-light  {%endif%}">
-     <a href="{{ path('modos') }}" class="nav-link font-italic darkPinkFont">
-          <i class="ml-2 text-primary "></i>
-          modérateurs
-      </a>
-    </li>
+    {% if app.user.getRolesString!='ROLES_USER' %}
+      <li class="nav-item {% if route == 'modo' %} bg-light  {%endif%}">
+      <a href="{{ path('modo') }}" class="nav-link font-italic darkPinkFont">
+            <i class="ml-2 text-primary "></i>
+            modérateurs
+        </a>
+      </li>
+    {%endif%}
     <li class="nav-item {% if route == 'profil' %} bg-light  {%endif%}">
      <a href="{{ path('profil') }}" class="nav-link font-italic darkPinkFont">
           <i class="ml-2 text-primary "></i>
@@ -36,7 +37,7 @@
     </li>
     
     <li class="nav-item">
-      <a href="{{ path('deconnexion') }}" class="nav-link font-italic darkPinkFont">
+      <a href="{{ path('logout') }}" class="nav-link font-italic darkPinkFont">
           <i class="ml-2 text-primary"></i>
           Deconnexion
       </a>

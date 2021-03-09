@@ -1,11 +1,15 @@
 security:
+    encoders:
+        App\Entity\Modo:
+            algorithm: bcrypt
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        from_database:
+        app_user_provider:
             entity:
-                class: App\Entity\Moderateur
-                property: mdp
+                class: App\Entity\Modo
+                property: pseudo
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -13,7 +17,12 @@ security:
         main:
             anonymous: true
             lazy: true
-
+            provider: app_user_provider
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path: logout
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
@@ -25,3 +34,8 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+    role_hierarchy:
+        ROLE_MODO:          [ROLE_USER]
+        ROLE_SUPERMODO:     [ROLE_MODO]
+        ROLE_CROFTY:        [ROLE_SUPERMODO]

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+    <h1 class="text-center creamCakeFont darkPinkFont">{{profil.getUsername()|capitalize}}</h1>
+    <div class="fondTransparent">
+    <p> adresse mail : {{profil.getSplitEmail()[0]}}@{{profil.getSplitEmail()[1]}}</p>
+    <p> rang Actuel :
+        {% if profil.getRolesString() =="ROLES_CROFTY" %}
+            <td>Crofty rank</td>
+        {%elseif profil.getRolesString()=="ROLES_SUPERMODO" %}
+            <td>Modo expérimenté</td>
+        {%elseif profil.getRolesString()=="ROLES_MODO" %}
+            <td>Modo</td>
+        {%elseif profil.getRolesString()=="ROLES_USER" %}
+            <td>Amis</td>
+        {%endif%}
+    </p>
+    <p> Addresse Actuelle :
+        {{profil.getAdress()}}.
+    </p>
+    <p> Ville Actuelle :
+        {{profil.getCity()}}.
+    </p>
+    <p> <a href="{{ path('profilEdit')}}">Edit</a></p>
+    </div>
+{% endblock %}
