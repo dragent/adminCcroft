@@ -24,10 +24,10 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('index');
         }
         $modoRepo= $this->getDoctrine()->getRepository(Modo::class);
-        $link=explode('/',$request->server->get("PATH_INFO"))[2];
+        $link=explode('/',$request->server->get("SCRIPT_URL"))[2];
         $modo=$modoRepo->findBy(['link'=>$link])[0];
         if(($modo==null) || ( $modo->getLinkIsUsed() ))
-        {   
+        {
             return $this->redirectToRoute('login');
         }
         $form = $this->createForm(RegisterModoType::class,$modo);
@@ -46,8 +46,8 @@ class SecurityController extends AbstractController
             'pseudo'=>$modo->getPseudo(),
             'route'=>'inscription',
         ]);
-    } 
-    
+    }
+
     public function login()
     {
         return $this->render('security/login.html.twig', [
@@ -58,6 +58,6 @@ class SecurityController extends AbstractController
 
     public function logout()
     {
-        
+
     }
 }
